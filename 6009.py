@@ -61,6 +61,6 @@
 # s=input().split(":") #6023
 # print(s[1])
 
-w1, w2=input().split()
+w1, w2=input().split() #6024
 s=w1+w2
 print(s)
