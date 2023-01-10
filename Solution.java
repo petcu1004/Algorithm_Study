@@ -25,6 +25,7 @@
 //System.out.println(var);		       				   // 문자열 1개 출력하는 예제
 //System.out.println(AB);		       				     // long 변수 1개 출력하는 예제
 /////////////////////////////////////////////////////////////////////////////////////////////
+import java.util.Arrays;
 import java.util.Scanner;
 import java.io.FileInputStream;
 
@@ -67,43 +68,212 @@ class Solution
 				N[i] = n.charAt(i) - '0'; // i=0 일때, '1' - '0' = 1 이됨.
 			}
 
-			int []res=new int[n.length()];
-			
-			if(N[0]>=x && N[0]>=y){
-				System.out.println("111111");
-				if(x>y){
-					res[0]=x;
-				}
-				else res[0]=y;
-			}
-			else{
-				System.out.println(-1);
-			}
+			int[] res = new int[n.length()];
+			// System.out.println(res);			
 
-			for(int i=0;i<n.length();i++){
-				if(res[i]==N[i]){
-					if(x>y){
-						res[i+1]=y;
+			System.out.print("#"+test_case+" ");
+
+			if(n.length()==1){ //N이 한자리수일 경우
+				//n과 비교했을 때 x가 0이면서, y까지 가서 n보다 작은 값이면 성공, 하지만 x가 작은 값인데 y가 큰값이면 안되고, 
+				//x가 더 큰값일 경우는 y까지 안가도 그냥 안됨.
+				if(x==0 && N[0]>y){
+					//결과값 나옴
+					System.out.println(y);
+					
+				}
+				else{ 
+					//-1 출력
+					System.out.print(-1);
+				}
+			}
+			else if(n.length()==2){ //N이 두 자리수 이상
+				//x가 작은 경우, y값은 다 상관없음.
+				if(N[0]>x){
+					//결과값 나옴
+					if(N[1]>y){
+						res[0]=y;
+						res[1]=x;
+
+						for(int i=0;i<res.length;i++){
+							System.out.print(res[i]);
+						}
+						// System.out.println(Arrays.toString(res));
 					}
-					res[i+1]=x;
-	
 				}
+				//x가 같은 경우, y값보다 작거나 같아야함.
+				else if(N[0]==x){
+					if(N[1]>y){
+						//결과값 나옴.
+						res[0]=x;
+						res[1]=y;
+						for(int i=0;i<res.length;i++){
+							System.out.print(res[i]);
+						}
+					}
+					else{
+						System.out.println(-1);
+					}
+				}
+				//x가 큰 경우, -1 출력
+				else if(N[0]<x){
+					//-1 출력
+					System.out.println(-1);
+				}
+			}
+			else{ //3자리 수 이상
+				
+					if(N[0]>y){ //x, y값이 첫번째 시작값보다 작은 경우
+						for(int i=0;i<n.length();i++){
+						//결과가 나옴
+						res[i]=y;
+						}
+						for(int i=0;i<res.length;i++){
+							System.out.print(res[i]);
+						}
+					}
+					else if (N[0]==x && N[0] <y && N[1] !=y){ //x값은 같지만 y값보다는 더 작은 경우 y값이 결과값 안에 들어가야하는데 들어갈 수 있는 지 뒤에 값을 계속 비교해줘서 각을 봐야함.
+						//ex) 475555 4 8 의 경우 - N[1]보다 x값이 더 작아서 가능
+						if(N[1]>x){
+							res[0]=x;
+							if(N[1]>y){ //ex) 475555 4 6 의 경우
+								res[1]=y;
+							}
+							else res[1]=x;  //ex) 475555 4 8 의 경우 => 4488888
+							for(int i=2;i<n.length();i++){ //2번째 숫자가 어떻게 됐든 작으니까 그 뒤에 나오는 숫자는 신경쓸거 없이 큰 y값 넣으면 됨.
+								res[i]=y;
+							}	
+							for(int i=0;i<res.length;i++){
+								System.out.print(res[i]);
+							}
+						}
+						else if( N[1]<x){ //ex) 4155555 4 8의 경우 - N[1]보다 x값이 더 커서 불가능
+							System.out.print(-1);
+						}
+					}
+					else if (N[0]==x && N[1]==y){ //x, y 순서대로 값이 들어갈 수 있지만 다음 나오는 값들이 y보다 작거나 같은 값이 나와야함. y보다 큰값이 나오게 되면 -1 출력
+						//ex) 4788858 4 7 의 경우 - N[2]값이 x보다 커서 가능
+						res[0]=x;
+						res[1]=y;
+						
+						for(int i=2;i<n.length();i++){
+							
+							if(N[i]>x){
+								if(N[i]>=y){ //ex) 4788858/4777758  4 7 의 경우
+									res[i]=y;
+								}
+								else if(res[i-1]<N[i-1]){ //앞에 값이 원래 값보다 더 작게 바뀌었다면 큰 값이 계속 나와도 됨!
+									res[i]=y;
+								}
+								else{//ex) 4758858 4 7 의 경우  
+									res[i]=x;
+									// x=y;
+
+								}
+							}
+							else if(N[i]<x){ //ex) 452555 4 5의 경우 - N[2]값이 x보다 작아서 불가능
+								System.out.println(-1);
+								break;
+							}
+							else if (N[i]==x){ //ex) 4544425 4 5의 경우 - N[5]값이 x보다 작아서 불가능
+								res[i]=x;
+							}
+
+						}
+						if(res[res.length-1]!=0){
+							for(int i=0;i<res.length;i++){
+								System.out.print(res[i]);
+							}
+						}
+					}
+					else if (N[0]<x){ //x값이 첫번째 자리보다 커버리면 값이 아예 만들어질 수가 없어서 -1 출력 
+						System.out.print(-1);
+						
+					}
+					else if (N[0]==y){ //첫번째 값이 x값보다는 작지만 y값과 같다면 뒤에 나오는 값 중 x보다 작은 값이 나와버리면 숫자를 만들수가 없음 -1 출력 (ex, 611111 4 6 일 경우) 그래서 각을 봄.
+						
+						if(N[1]>x){ //가능 (ex, 63555555 2 6 일 경우)
+							
+							res[0]=y;
+							if(N[1]>y){//가능 (ex, 67555555 2 6 일 경우)
+								res[1]=y;
+							}
+							else res[1]=x;
+							
+							for(int i=2;i<n.length();i++){
+								if(res[i-1]<N[i-1]){ //앞에 값이 원래 값보다 더 작게 바뀌었다면 큰 값이 계속 나와도 됨!
+									// System.out.println("--------------");
+									res[i]=y;
+									x=y;
+								}
+								else
+									res[i]=x;
+							}
+							for(int i=0;i<res.length;i++){
+								System.out.print(res[i]);
+							}
+
+						}
+
+						else if(N[1]<x){ //불가능
+							System.out.println(-1);
+						}
+						else if(N[1]==x){
+						//ex) 325555  2 3 의 경우 - N[2]값이 x보다 커서 가능
+							res[0]=y;
+							res[1]=x;
+							int flag=0;
+							
+							for(int i=2;i<n.length();i++){
+								if(N[i]>y){
+									if(res[i-1]<N[i-1]){ //앞에 값이 원래 값보다 더 작게 바뀌었다면 큰 값이 계속 나와도 됨!
+										res[i]=y;
+										
+									}
+									else res[i]=x;
+								}
+								else if(flag==1){
+									res[i]=y;
+								}
+								else if(N[i]>=x){
+									if(res[i-1]<N[i-1]){ //앞에 값이 원래 값보다 더 작게 바뀌었다면 큰 값이 계속 나와도 됨!
+										res[i]=y;
+										flag=1;
+										
+											
+																	
+									}
+									
+									else res[i]=x;
+
+								}
+								
+								else if (N[i]<x){ //ex) 322211  2 3의 경우 - N[4]값이 x보다 작아서 불가능
+									System.out.print(-1);
+									break;
+									
+								}
+								
+								
+							}
+							if(res[res.length-1]!=0){
+								for(int i=0;i<res.length;i++){
+									System.out.print(res[i]);
+								}
+							}
+							
+
+
+						
+						}
+						
+
+					}
+					
+				
 
 			}
-			System.out.println(res);
+			System.out.println();
 
-			
-		
-
-
-
-			// //출력
-			// for(int i=0;i<N.length;i++) {
-			// 	System.out.println("N["+i+"]="+N[i]);
-			// }
-			// System.out.println(x);
-			// System.out.println(y);
-			
 			
 
 		}
