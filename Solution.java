@@ -111,26 +111,28 @@ class Solution
 						}
 					}
 					else{
-						System.out.println(-1);
+						System.out.print(-1);
 					}
 				}
 				//x가 큰 경우, -1 출력
 				else if(N[0]<x){
 					//-1 출력
-					System.out.println(-1);
+					System.out.print(-1);
 				}
 			}
 			else{ //3자리 수 이상
 				
 					if(N[0]>y){ //x, y값이 첫번째 시작값보다 작은 경우
-						for(int i=0;i<n.length();i++){
+						for(int i=0;i<n.length()-1;i++){
 						//결과가 나옴
 						res[i]=y;
 						}
+						res[n.length()-1]=x;
 						for(int i=0;i<res.length;i++){
 							System.out.print(res[i]);
 						}
 					}
+					
 					else if (N[0]==x && N[0] <y && N[1] !=y){ //x값은 같지만 y값보다는 더 작은 경우 y값이 결과값 안에 들어가야하는데 들어갈 수 있는 지 뒤에 값을 계속 비교해줘서 각을 봐야함.
 						//ex) 475555 4 8 의 경우 - N[1]보다 x값이 더 작아서 가능
 						if(N[1]>x){
@@ -171,7 +173,7 @@ class Solution
 								}
 							}
 							else if(N[i]<x){ //ex) 452555 4 5의 경우 - N[2]값이 x보다 작아서 불가능
-								System.out.println(-1);
+								System.out.print(-1);
 								break;
 							}
 							else if (N[i]==x){ //ex) 4544425 4 5의 경우 - N[5]값이 x보다 작아서 불가능
@@ -189,12 +191,24 @@ class Solution
 						System.out.print(-1);
 						
 					}
+					else if(N[0]>x){
+						if(N[1]<y){
+							res[0]=x;
+							for(int i=1;i<n.length();i++)
+							{
+								res[i]=y;
+							}
+						}
+						for(int i=0;i<res.length;i++){
+							System.out.print(res[i]);
+						}
+					}
 					else if (N[0]==y){ //첫번째 값이 x값보다는 작지만 y값과 같다면 뒤에 나오는 값 중 x보다 작은 값이 나와버리면 숫자를 만들수가 없음 -1 출력 (ex, 611111 4 6 일 경우) 그래서 각을 봄.
 						
 						if(N[1]>x){ //가능 (ex, 63555555 2 6 일 경우)
-							
+							int flag=0;
 							res[0]=y;
-							if(N[1]>y){//가능 (ex, 67555555 2 6 일 경우)
+							if(N[1]>y){//가능 (ex, 67555555 2 6 일 경우) !!!!!!!!!! 오답!!!!!!!!!6666666이 나옴
 								res[1]=y;
 							}
 							else res[1]=x;
@@ -202,20 +216,48 @@ class Solution
 							for(int i=2;i<n.length();i++){
 								if(res[i-1]<N[i-1]){ //앞에 값이 원래 값보다 더 작게 바뀌었다면 큰 값이 계속 나와도 됨!
 									// System.out.println("--------------");
+									
 									res[i]=y;
-									x=y;
+									flag=1;
+								}
+								else if(flag==1){
+									res[i]=y;
 								}
 								else
 									res[i]=x;
+								
+							}
+							int f=0;
+							for(int i=0;i<res.length;i++){
+								if(res[i]==y){
+									f++;
+								}
+								if(f==res.length){
+									if(res[res.length-1]>x){
+										res[res.length-1]=x;
+									}
+									
+									
+								}
 							}
 							for(int i=0;i<res.length;i++){
-								System.out.print(res[i]);
+								if(res[i]==y){
+									f++;
+								}}
+							if(f!=res.length){
+								for(int i=0;i<res.length;i++){
+									System.out.print(res[i]);
+								}
 							}
+							else{
+								System.out.print(-1);
+							}
+							
 
 						}
 
 						else if(N[1]<x){ //불가능
-							System.out.println(-1);
+							System.out.print(-1);
 						}
 						else if(N[1]==x){
 						//ex) 325555  2 3 의 경우 - N[2]값이 x보다 커서 가능
