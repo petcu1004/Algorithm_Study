@@ -1,6 +1,5 @@
 a, b =map(int, input().split())
 
-
 A, B=[], []
 
 for _ in range(a):
