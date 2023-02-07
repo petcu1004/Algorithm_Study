@@ -25,8 +25,9 @@ for i in range(n-2):
     for j in range(i+1, n-1):
         for k in range(i+2, n):
             s=arr[i]+arr[j]+arr[k]
-            if s<=m:
-                if mx<s:
+            print(s)
+            if s<=m: #해당 값보다 작거나 같은 여러 수의 값 중
+                if mx<s: #가장 큰 값으로 선택함
                     mx=s
                     break
 
