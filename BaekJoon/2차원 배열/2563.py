@@ -1,9 +1,5 @@
 ip=int(input())
-l = [[0 for j in range(100)] for i in range(100)]
-
-for i in range(100):
-    for j in range(100):
-        l[i][j]=0 #0으로 초기화
+l = [[0 for j in range(100)] for i in range(100)] #0으로 초기화
 
 for i in range(ip):
     x, y=map(int, input().split())
