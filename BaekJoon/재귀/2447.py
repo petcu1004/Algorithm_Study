@@ -1,5 +1,3 @@
-
-
 def draw_stars(n):
     if n==1:
         return ['*']
@@ -18,4 +16,3 @@ def draw_stars(n):
 
 n=int(input())
 print('\n'.join(draw_stars(n)))
-
