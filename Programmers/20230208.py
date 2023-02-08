@@ -11,7 +11,6 @@ def solution(k, score):
             l.append(score[i])
             l.sort(reverse=1)
             l.pop(-1)
-            
         l.sort(reverse=1)
 
         answer.append(min(l))
