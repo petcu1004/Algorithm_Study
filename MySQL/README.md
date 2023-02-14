@@ -17,3 +17,4 @@ https://velog.io/@petcu1004/series/MySQL
 - SELECT/0214(5).sql : 인기있는 아이스크림 - Level1 (2023.02.14.화) - 스스로 품 (ASC, DESC 기억하기)
 - SELECT/0214(6).sql : 모든 레코드 조회하기 - Level1 (2023.02.14.화) - 스스로 품
 - SELECT/0214(7).sql : 재구매가 일어난 상품과 회원 리스트 구하기 - Level2 (2023.02.14.화) - 코드 참고함
+- SUM, MAX, MIN/0214.sql : 가장 비싼 상품 구하기 - Level1 (2023.02.14.화) - 스스로 품
