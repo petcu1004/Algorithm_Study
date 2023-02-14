@@ -4,6 +4,8 @@
 해당 문제 풀이 및 해석, 문법 학습
 https://velog.io/@petcu1004/series/MySQL
 
+문제 : https://school.programmers.co.kr/learn/challenges?tab=sql_practice_kit
+
 - SELECT/0213.sql : 평균 일일 대여 요금 구하기 - Level1 (2023.02.13.월) - 스스로 품
 - SELECT/0213(1).sql : 3월에 태어난 여성 회원 목록 출력하기 - Level2 (2023.02.13.월) - 스스로 품
 - SELECT/0213(2).sql : 과일로 만든 아이스크림 고르기 - Level1 (2023.02.13.월) - 스스로 품
