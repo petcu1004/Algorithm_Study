@@ -24,3 +24,4 @@ https://velog.io/@petcu1004/series/MySQL
 
 - SUM, MAX, MIN/0216.sql : 최댓값 구하기 - Level1 (2023.02.16.목) - 스스로 품
 - SUM, MAX, MIN/0216(1).sql : 최솟값 구하기 - Level1 (2023.02.16.목) - 스스로 품
+- SUM, MAX, MIN/0216(2).sql : 동물 수 구하기 - Level1 (2023.02.16.목) - 스스로 품
