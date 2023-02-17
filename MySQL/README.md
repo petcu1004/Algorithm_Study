@@ -27,3 +27,5 @@ https://velog.io/@petcu1004/series/MySQL
 - SUM, MAX, MIN/0216(2).sql : 동물 수 구하기 - Level1 (2023.02.16.목) - 스스로 품
 
 - SUM, MAX, MIN/0217.sql : 중복 제거하기 - Level2 (2023.02.17.금) - 검색 후 스스로 품
+- GROUP BY/0217.sql : 진료과별 총 예약 횟수 출력하기 - Level2 (2023.02.17.금) - 검색 후 스스로 품
+- GROUP BY/0217(1).sql : 식품분류별 가장 비싼 식품의 정보 조회하기 - Level4 (2023.02.17.금) - 코드 참고함
