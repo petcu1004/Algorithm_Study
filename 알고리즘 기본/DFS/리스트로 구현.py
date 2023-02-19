@@ -26,19 +26,14 @@ def dfs(graph, start_node):
 
         # 그 중에서 가장 마지막 데이터를 추출 (스택 구조의 활용)
         node=need_visited.pop() ##list에서 pop을 활용하면 성능면에서 떨어짐.
-        print(node)
         # 만약 그 노드가 방문한 목록에 없다면
         if node not in visited:
-            print(visited)
             # 방문한 목록에 추가하기
             visited.append(node)
-            print(graph[node])
 
             #그 노드에 연결된 노드를
             need_visited.extend(graph[node])
 
-    print(visited)
     return visited
 
-
-dfs(graph, 'A')
+print(dfs(graph, 'A'))
