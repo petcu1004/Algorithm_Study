@@ -22,3 +22,5 @@ https://velog.io/@petcu1004/series/Programmers-Algorithm
 - 정렬\0214.py : H-Index - Level2 = 정렬 문제 (2023.02.14.화) - 코드 참고함
 
 - 완전탐색\0215.py : 카펫 - Level2 = 완전탐색 문제 (2023.02.15.수) - 코드 참고함
+
+- 깊이,너비우선탐색\0219.py : 타겟 넘버 - Level2 = 완전탐색 문제 (2023.02.19.일) - 코드 참고함
