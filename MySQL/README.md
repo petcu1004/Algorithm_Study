@@ -54,4 +54,4 @@ https://velog.io/@petcu1004/series/MySQL
 
 - GROUP BY/0221.sql : 동명 동물 수 찾기 - Level2 (2023.02.21.화) - 스스로 품
 - GROUP BY/0221(1).sql : 입양 시각 구하기(1) - Level2 (2023.02.21.화) - 스스로 품
-
+- GROUP BY/0221(2).sql : 자동차 대여 기록에서 대여중 / 대여 가능 여부 구분하기 - Level3 (2023.02.21.화) - 코드 참고 후 스스로 품
