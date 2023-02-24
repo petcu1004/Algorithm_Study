@@ -1,7 +1,7 @@
 # Algorithm_Study
 알고리즘 공부
 
-언어 : Python , Java
+언어 : Python
 
 - BaekJoon : 백준 알고리즘
 - CodeUp
