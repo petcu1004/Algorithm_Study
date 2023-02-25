@@ -11,6 +11,7 @@ def binary_search(arr, value):
             left = mid +1
 
 
-arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-result_index=binary_search(arr, 3)
-print(result_index, arr[result_index])
+arr = [4, 1, 5, 2, 3]
+arr.sort()
+result_index=binary_search(arr, 1)
+print(result_index)
