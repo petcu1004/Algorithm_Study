@@ -7,7 +7,7 @@ m=[]
 for _ in range(a):
     k=input()
     m.append(k)
-    
+
 x=0
 res=[]
 
@@ -55,6 +55,4 @@ for i in range(a-7):
         x=0
         y=0
 
-# print(x, y)
 print(min(res))
-
