@@ -12,12 +12,8 @@ for i in range(1,n+1):
     dogam[i]=k
     dogam[k]=i
 
-
-print(dogam)
-
 for i in range(m):
     x=input().rstrip()
-    # print(x)
     if x.isdigit():
         print(dogam[int(x)])
     else:
