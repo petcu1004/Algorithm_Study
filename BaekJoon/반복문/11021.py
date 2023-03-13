@@ -12,6 +12,6 @@ for i in range(n):
     # print(":", end=' ')
     # print(a+b)
 
-    # print(f'Case #{i+1}: {a+b}')
+    print(f'Case #{i+1}: {a+b}')
     
-    print("Case #", i+1, ": ", a+b, sep='')
+    # print("Case #", i+1, ": ", a+b, sep='')
