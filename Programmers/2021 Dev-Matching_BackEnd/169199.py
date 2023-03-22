@@ -31,6 +31,7 @@ def solution(board):
         k=1
         q=deque()
         q.append((x, y))
+        v[x][y]=1
         print(q)
         
         while(q):
@@ -40,56 +41,62 @@ def solution(board):
             y=d[1]
             
             for i in range(4):
-                  
-                nx=x+dx[i]
-                ny=y+dy[i]
-                print(dx[i], dy[i])
-                print(nx, ny)
-
-                if board[nx][ny]=='D' : #장애물을 만났을 때
-                    if board[nx-dx[i]][ny-dy[i]]=='G':
-                        print("찾음")
-                        print(k)
-                        return k
-                    print("장애물")
-                    q.append((nx-dx[i], ny-dy[i]))
-                    v[nx][ny]=1
-                    k+=1
-                    print(v)
-                    break
-                    
-                if nx>=len(board) or nx<0 or ny>=len(board[0]) or ny<0:
-                    print("나감")
-                    # q.append((nx-dx[i], ny-dy[i]))
-                    # k+=1
-                    # print(v)
-                    continue
                 
-                if board[nx][ny]=='.' or board[nx][ny]=='R' or board[nx][ny]=='G' and v[nx][ny]==0: #빈공간일때
-                    print("빈공간")
+                while(1):    
+                    nx=x+dx[i]
+                    ny=y+dy[i]
+                    print(dx[i], dy[i])
                     print(nx, ny)
 
-                    # if board[nx+dx[i]][ny+dy[i]]=='D':
-                    #     print("다음 장애물 있음")
-                    #     v[nx][ny]=1
-                        
-                    #     q.append((nx, ny))
-                    #     break
-                        # if v[nx][ny]:
-                        #     break
-                        
-                        
-                        # print(v)
-                        # continue
+                    if board[nx-dx[i]][ny-dy[i]]=='G':
+                            print("찾음")
+                            print(k)
+                            return k
 
-                    v[nx][ny]=1
-                    x=nx
-                    y=ny
-                    continue
-                else: #
-                    x=nx
-                    y=ny
-                    break
+                    if board[nx][ny]=='D' : #장애물을 만났을 때
+                        if board[nx-dx[i]][ny-dy[i]]=='G':
+                            print("찾음")
+                            print(k)
+                            return k
+                        print("장애물")
+                        q.append((nx-dx[i], ny-dy[i]))
+                        v[nx][ny]=1
+                        k+=1
+                        print(v)
+                        break
+                        
+                    if nx>=len(board) or nx<0 or ny>=len(board[0]) or ny<0:
+                        print("나감")
+                        q.append((nx-dx[i], ny-dy[i]))
+                        k+=1
+                        print(v)
+                        break
+                    
+                    if board[nx][ny]=='.' or board[nx][ny]=='R' or board[nx][ny]=='G' and v[nx][ny]==0: #빈공간일때
+                        print("빈공간")
+                        print(nx, ny)
+
+                        if board[nx+dx[i]][ny+dy[i]]=='D':
+                            print("다음 장애물 있음")
+                            v[nx][ny]=1
+                            
+                            q.append((nx, ny))
+                            break
+                            # if v[nx][ny]:
+                            #     break
+                            
+                            
+                            print(v)
+                            continue
+
+                        v[nx][ny]=1
+                        x=nx
+                        y=ny
+                        continue
+                    else: #
+                        x=nx
+                        y=ny
+                        break
                   
 
 
