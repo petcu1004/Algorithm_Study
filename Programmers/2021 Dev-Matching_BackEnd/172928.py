@@ -1,5 +1,3 @@
-##공원 산책
-
 from collections import deque
 def solution(park, routes):
     answer = []
@@ -16,31 +14,24 @@ def solution(park, routes):
     moveY={'E':1, 'W':-1, 'S': 0, 'N' : 0}
     
     for i in range(len(routes)):
-        print(routes[i][0], routes[i][2])
         kx, ky=0, 0
         for j in range(int(routes[i][2])):
             
             nx=a+moveX[routes[i][0]]
             ny=b+moveY[routes[i][0]]
-            print(nx, ny)
-            
+
             if 0>nx or nx>=len(park) or 0>ny or ny>=len(park[0]):
-                # continue
-                print("벽")
-                # a=nx-kx
-                # b=ny-ky
+                a-=kx
+                b-=ky
                 break
             if park[nx][ny]=='X':
-                # continue
-                print("장애물")
-                # a=nx-kx
-                # b=ny-ky
+                a-=kx
+                b-=ky
                 break
             else:
                 a=nx
-                kx=a+nx
+                kx+=moveX[routes[i][0]]
                 b=ny
-                ky=b+ny
-            
+                ky+=moveY[routes[i][0]]
 
-    return answer
+    return [a, b]
