@@ -8,25 +8,26 @@ def bfs(v):
 
     while q:
         node=q.popleft()
-        for i in range(1,n):
-            if matrix[node][i]==1 and not visited[i]:
+        for i in matrix[node]:
+            if not visited[i]:
                 q.append(i)
                 res[i]=res[node]+1
                 visited[i]=1
-                # print(visited)/
+                # print(visited)
 
 
 n=int(input())
 x, y = map(int, input().split())
 
-matrix=[[0]*(n+1) for _ in range(n+1)]
+matrix=[[] for _ in range(n+1)]
 visited=[0]*(n+1)
 res=[0]*(n+1)
 
 k=int(input())
 for i in range(k):
     a, b = map(int, input().split())
-    matrix[a][b] = matrix[b][a] = 1
+    matrix[a].append(b)
+    matrix[b].append(a)
 
                
 bfs(x)
