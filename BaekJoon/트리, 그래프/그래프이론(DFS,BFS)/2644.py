@@ -15,6 +15,14 @@ def bfs(v):
                 res[i]=res[node]+1
                 visited[i]=1
 
+def dfs(v):
+    visited[v]=1
+
+    for i in range(1, n+1):
+        if matrix[v][i]==1 and not visited[i]:
+            res[i]=res[v]+1
+            dfs(i)
+
 n=int(input())
 x, y = map(int, input().split())
 
@@ -28,7 +36,7 @@ for i in range(k):
     matrix[a][b] = matrix[b][a] = 1
 
                
-bfs(x)
+dfs(x)
 if res[y]>0:
     print(res[y])
 else:
