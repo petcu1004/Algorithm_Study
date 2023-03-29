@@ -1,4 +1,5 @@
-## 촌수계산
+#촌수계산
+
 from collections import deque
 
 def bfs(v):
@@ -8,26 +9,23 @@ def bfs(v):
 
     while q:
         node=q.popleft()
-        for i in matrix[node]:
-            if not visited[i]:
+        for i in range(1,n+1):
+            if matrix[node][i]==1 and not visited[i]:
                 q.append(i)
                 res[i]=res[node]+1
                 visited[i]=1
-                # print(visited)
-
 
 n=int(input())
 x, y = map(int, input().split())
 
-matrix=[[] for _ in range(n+1)]
+matrix=[[0]*(n+1) for _ in range(n+1)]
 visited=[0]*(n+1)
 res=[0]*(n+1)
 
 k=int(input())
 for i in range(k):
     a, b = map(int, input().split())
-    matrix[a].append(b)
-    matrix[b].append(a)
+    matrix[a][b] = matrix[b][a] = 1
 
                
 bfs(x)
