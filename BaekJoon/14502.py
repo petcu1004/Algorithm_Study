@@ -40,8 +40,7 @@ def bfs(mm):
     for i in range(n):
         for j in range(m):
             if mm[i][j]==0:
-                ans+=1
-                
+                ans+=1         
     return ans
 
 #벽을 3개 세워야 함.
@@ -52,34 +51,11 @@ for i in range(n):
             root.append((i, j))
 
 answer=0
-# print(root)
 for k in list(combinations(root, 3)):
     tmp=copy.deepcopy(maps)
-    # print(k)
     for i in range(3):
         tmp[k[i][0]][k[i][1]]=1
-    # print(tmp)
 
-    # # 바이러스가 퍼져나가면 나오는 결과
-    # for i in range(n):
-    #     for j in range(m):
-    #         if tmp[i][j]==2:
-    #             # print("바이러스 개수")
-    #             print(tmp)
     answer=max(answer,bfs(tmp))
-                # if answer!=32:
-                #     print(answer)
-                    
-                # print(bfs(tmp, i, j))
-
-# print(tmp)
-
-
-
-# answer=0
-# for i in range(n):
-#     for j in range(m):
-#         if tmp[i][j]==2:
-#             answer=max(answer,bfs(tmp, i, j))
 
 print(answer)
