@@ -1,8 +1,12 @@
 n, m = map(int, input().split())
 
-res=list()
+k=0
 for i in range(n):
     a=list(map(int, input().split()))
-    res.append(a)
+    
+    res=min(a)
 
-print(res)
+    answer=max(res, k)
+
+
+print(answer)
