@@ -1,3 +1,5 @@
+import sys
+
 n = int(input())
 arr = []
 for i in range(n):
@@ -6,7 +8,7 @@ for i in range(n):
 visited = [0] * n
 out = []
 
-check = 1000000
+check = sys.maxsize
 
 
 def dfs(depth, next, cost):
