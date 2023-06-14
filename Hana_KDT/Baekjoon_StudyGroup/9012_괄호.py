@@ -1,21 +1,22 @@
-# 괄호 - 코드 작성중
+# 괄호
+import sys
 
-t=int(input())
-stack=list()
-for i in range(t):
-    n=list(input())
-    # for j in n:
+input = sys.stdin.readline
 
-    #     if(j=='('):
-            
-    #         stack.append('a')
-    #     else:
-    #         if len(stack)==0:
-    #             print("NO")
-    #             break
-    #         stack.pop()
-    # if(len(stack)>0):
-    #     print("NO")
-    #     # break
-    # else:
-    #     print("YES")
+a = int(input())
+for i in range(a):
+    b = input()
+    s = list(b)
+    sum = 0
+    for i in s:
+        if i == "(":
+            sum += 1
+        elif i == ")":
+            sum -= 1
+        if sum < 0:
+            print("NO")
+            break
+    if sum > 0:
+        print("NO")
+    elif sum == 0:
+        print("YES")
